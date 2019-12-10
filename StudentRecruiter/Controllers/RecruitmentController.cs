@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace StudentRecruiter.Controllers
 {
-	public class HomeController : Controller
+	public class RecruitmentController : Controller
 	{
 		public ActionResult Index()
 		{
