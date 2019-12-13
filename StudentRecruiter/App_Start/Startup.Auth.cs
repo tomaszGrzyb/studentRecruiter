@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using StudentRecruiter.Models;
+using StudentRecruiter.Models.Enums;
 
 namespace StudentRecruiter
 {
@@ -45,12 +47,45 @@ namespace StudentRecruiter
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+			CreateRolesandUsers();
+		}
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
-        }
-    }
+		private void CreateRolesandUsers()
+		{
+			ApplicationDbContext context = new ApplicationDbContext();
+
+			var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+			var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+			var adminRole = Role.Admin.ToString();
+			if (!roleManager.RoleExists(Role.Admin.ToString()))
+			{
+
+				var role = new IdentityRole();
+				role.Name = adminRole;
+				roleManager.Create(role);
+
+				var user = new ApplicationUser();				
+				user.Email = "webrecruiter@gmail.com";
+				user.UserName = "webrecruiter@gmail.com";
+				string password = "Admin123!";
+
+				var userAdded = UserManager.Create(user, password);
+
+				if (userAdded.Succeeded)
+				{
+					UserManager.AddToRole(user.Id, adminRole);
+				}
+			}
+
+			var candidateRole = Role.Candidate.ToString();
+			if (!roleManager.RoleExists(candidateRole))
+			{
+				var role = new IdentityRole();
+				role.Name = candidateRole;
+				roleManager.Create(role);
+
+			}
+		}
+	}
 }
