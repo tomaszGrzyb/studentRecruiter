@@ -13,7 +13,9 @@ namespace StudentRecruiter.Models.Domain
 		public DocumentType DocumentType { get; set; }
 
 		[Required]
-		public string SerialNumber { get; set; }
+		[StringLength(30)]
+        public string SerialNumber { get; set; }
+
 		[Required]
 		public DateTime ExpirationDate { get; set; }
 	}

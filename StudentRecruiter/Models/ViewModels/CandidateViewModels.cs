@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentRecruiter.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -34,14 +35,28 @@ namespace StudentRecruiter.Models.ViewModels
 		[DisplayName("Pesel")]
 		public string Pesel { get; set; }
 
-		//public int? AddressId { get; set; }
-		//public Address Address { get; set; }
+	    [Required]
+	    [StringLength(50)]
+	    public string Street { get; set; }
 
-		//public int? DocumentId { get; set; }
-		//public Document Document { get; set; }
+	    [Required]
+	    [StringLength(10)]
+	    public string HouseNumber { get; set; }
 
-		//[Required]
-		//public string UserId { get; set; }
-		//public ApplicationUser User { get; set; }
-	}
+	    public int? ApartmentNumber { get; set; }
+
+	    [Required]
+	    [StringLength(30)]
+	    public string City { get; set; }
+
+	    [Required]
+	    public string ZipCode { get; set; }
+
+	    [Required]
+	    [StringLength(30)]
+	    public string Country { get; set; }
+
+        public int DocumentTypeId { get; set; }
+        public List<DocumentType> DocumentTypes { get; set; }
+    }
 }

@@ -8,6 +8,7 @@ namespace StudentRecruiter.Models.Enums
 	public enum Role
 	{
 		Admin = 1,
-		Candidate = 2
+		Candidate = 2,
+        Manager = 3
 	}
 }

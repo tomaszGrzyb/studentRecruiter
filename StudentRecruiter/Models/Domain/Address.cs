@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace StudentRecruiter.Models.Domain
 {
@@ -6,22 +7,25 @@ namespace StudentRecruiter.Models.Domain
 	{
 		public int Id { get; set; }
 
-		[DisplayName("Ulica")]
-		public string Street { get; set; }
+	    [Required]
+	    [StringLength(50)]
+        public string Street { get; set; }
 
-		[DisplayName("Nr domu")]
-		public int HouseNumber { get; set; }
+	    [Required]
+	    [StringLength(10)]
+        public string HouseNumber { get; set; }
 
-		[DisplayName("Nr mieszkania")]
-		public int ApartmentNumber { get; set; }
+		public int? ApartmentNumber { get; set; }
 
-		[DisplayName("Miasto")]
-		public string City { get; set; }
+	    [Required]
+	    [StringLength(30)]
+        public string City { get; set; }
 
-		[DisplayName("Kod kreskowy")]
-		public string ZipCode { get; set; }
+	    [Required]
+        public string ZipCode { get; set; }
 
-		[DisplayName("Kraj")]
-		public string Country { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string Country { get; set; }
 	}
 }

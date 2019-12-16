@@ -7,24 +7,19 @@ using System.Web;
 
 namespace StudentRecruiter.Models.Domain
 {
-	public class Candidate
+	public class CandidateDetails
 	{
 		public int Id { get; set; }
 
-		[StringLength(50)]
-		[Required]
-		public string FirstName { get; set; }
+	    [Required]
+	    public string UserId { get; set; }
+	    public ApplicationUser User { get; set; }
 
 		[StringLength(50)]
 		public string SecondName { get; set; }
 
-		[StringLength(50)]
-		[Required]
-		public string LastName { get; set; }
-
 		[Required]
 		public DateTime DateOfBirth { get; set; }
-
 
 		[StringLength(50)]
 		public string PlaceOfBirth { get; set; }
@@ -39,8 +34,6 @@ namespace StudentRecruiter.Models.Domain
 		public int? DocumentId { get; set; }
 		public Document Document { get; set; }
 
-		[Required]
-		public string UserId { get; set; }
-		public ApplicationUser User { get; set; }
+
 	}
 }

@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using StudentRecruiter.Models;
+using StudentRecruiter.Models.Domain;
 using StudentRecruiter.Models.Enums;
 
 namespace StudentRecruiter
@@ -60,7 +61,6 @@ namespace StudentRecruiter
 			var adminRole = Role.Admin.ToString();
 			if (!roleManager.RoleExists(Role.Admin.ToString()))
 			{
-
 				var role = new IdentityRole();
 				role.Name = adminRole;
 				roleManager.Create(role);
@@ -68,6 +68,8 @@ namespace StudentRecruiter
 				var user = new ApplicationUser();				
 				user.Email = "webrecruiter@gmail.com";
 				user.UserName = "webrecruiter@gmail.com";
+				user.FirstName = "Admin";
+				user.LastName = "Admin";
 				string password = "Admin123!";
 
 				var userAdded = UserManager.Create(user, password);
@@ -78,11 +80,20 @@ namespace StudentRecruiter
 				}
 			}
 
-			var candidateRole = Role.Candidate.ToString();
-			if (!roleManager.RoleExists(candidateRole))
+		    var candidateRole = Role.Candidate.ToString();
+		    if (!roleManager.RoleExists(candidateRole))
+		    {
+		        var role = new IdentityRole();
+		        role.Name = candidateRole;
+		        roleManager.Create(role);
+
+		    }
+
+            var managerRole = Role.Manager.ToString();
+			if (!roleManager.RoleExists(managerRole))
 			{
 				var role = new IdentityRole();
-				role.Name = candidateRole;
+				role.Name = managerRole;
 				roleManager.Create(role);
 
 			}
