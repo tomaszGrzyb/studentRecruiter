@@ -196,7 +196,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CandidateController.cs" />
+    <Compile Include="Controllers\CandidateDetailsController.cs" />
+    <Compile Include="Controllers\FieldOfStudiesController.cs" />
     <Compile Include="Controllers\RecruitmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -222,6 +223,22 @@
     <Compile Include="Migrations\201912161924377_candidateDetails.cs" />
     <Compile Include="Migrations\201912161924377_candidateDetails.Designer.cs">
       <DependentUpon>201912161924377_candidateDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912162040545_candidateDetails2.cs" />
+    <Compile Include="Migrations\201912162040545_candidateDetails2.Designer.cs">
+      <DependentUpon>201912162040545_candidateDetails2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912162044293_candidateDetails3.cs" />
+    <Compile Include="Migrations\201912162044293_candidateDetails3.Designer.cs">
+      <DependentUpon>201912162044293_candidateDetails3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912162057342_candidateDetails4.cs" />
+    <Compile Include="Migrations\201912162057342_candidateDetails4.Designer.cs">
+      <DependentUpon>201912162057342_candidateDetails4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912162119267_candidateDetails5.cs" />
+    <Compile Include="Migrations\201912162119267_candidateDetails5.Designer.cs">
+      <DependentUpon>201912162119267_candidateDetails5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domain\Address.cs" />
@@ -313,10 +330,16 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Candidate\Create.cshtml" />
     <Content Include="Views\Candidate\Edit.cshtml" />
+    <Content Include="Views\FieldOfStudies\Create.cshtml" />
+    <Content Include="Views\FieldOfStudies\Delete.cshtml" />
+    <Content Include="Views\FieldOfStudies\Details.cshtml" />
+    <Content Include="Views\FieldOfStudies\Edit.cshtml" />
+    <Content Include="Views\FieldOfStudies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Repositories\" />
+    <Folder Include="Views\CandidateDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -346,6 +369,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912161924377_candidateDetails.resx">
       <DependentUpon>201912161924377_candidateDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912162040545_candidateDetails2.resx">
+      <DependentUpon>201912162040545_candidateDetails2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912162044293_candidateDetails3.resx">
+      <DependentUpon>201912162044293_candidateDetails3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912162057342_candidateDetails4.resx">
+      <DependentUpon>201912162057342_candidateDetails4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912162119267_candidateDetails5.resx">
+      <DependentUpon>201912162119267_candidateDetails5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

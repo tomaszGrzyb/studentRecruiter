@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - My ASP.NET Application</title>
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
 
@@ -40,13 +39,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" style="text-align:center">
-		<input type="button" value="Rekrutacje" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAll", "Recruitment")'" />
-		<input type="button" value="Kierunki" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAll", "FieldOfStudy")'" />
-		<input type="button" value="Kandydaci" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAll", "Candidate")'" />
-		<input type="button" value="Użytkownicy" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAllUsers", "Admin")'" />
-		<input type="button" value="Ogólne" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("Settings", "Admin")'" />
-	</div>
+	@if (User.Identity.IsAuthenticated)
+	{
+		if (User.IsInRole("Admin"))
+		{
+			<div class="row" style="text-align:center">
+				<input type="button" value="Rekrutacje" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAll", "Recruitment")'" />
+				<input type="button" value="Kierunki" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("Index", "FieldOfStudies")'" />
+				<input type="button" value="Kandydaci" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAll", "Candidate")'" />
+				<input type="button" value="Użytkownicy" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("GetAllUsers", "Admin")'" />
+				<input type="button" value="Ustawienia" class="btn btn-info" , style="margin:0px 5px 0px 5px; width:150px;" onclick="location.href='@Url.Action("Settings", "Admin")'" />
+			</div>
+		}
+	}
 	<div class="container body-content" style="margin-top:20px">
 		@RenderBody()
 		<hr />

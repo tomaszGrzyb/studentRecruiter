@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using StudentRecruiter.Models;
 using StudentRecruiter.Models.Domain;
+using StudentRecruiter.Models.Enums;
 
 namespace StudentRecruiter.Controllers
 {
@@ -18,15 +19,19 @@ namespace StudentRecruiter.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+		private ApplicationDbContext _applicationDbContext;
 
         public AccountController()
         {
-        }
+			_applicationDbContext = new ApplicationDbContext();
+
+		}
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+			_applicationDbContext = new ApplicationDbContext();
         }
 
         public ApplicationSignInManager SignInManager
@@ -80,8 +85,15 @@ namespace StudentRecruiter.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
+					var userId = User.Identity.GetUserId();
+					var candidate = _applicationDbContext.Candidates
+						.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+
+					if (candidate == null)
+						return RedirectToAction("Create", "CandidateDetails");
+					else
+						return RedirectToAction("Index", "Home");
+				case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
@@ -130,7 +142,7 @@ namespace StudentRecruiter.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Niepoprawny kod.");
                     return View(model);
             }
         }
@@ -156,7 +168,8 @@ namespace StudentRecruiter.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+					UserManager.AddToRole(user.Id, Role.Candidate.ToString());
+					await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -164,7 +177,7 @@ namespace StudentRecruiter.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Create", "Candidate");
+                    return RedirectToAction("Create", "CandidateDetails");
                 }
                 AddErrors(result);
             }

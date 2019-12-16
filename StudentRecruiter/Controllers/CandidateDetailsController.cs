@@ -12,11 +12,11 @@ using StudentRecruiter.Models;
 namespace StudentRecruiter.Controllers
 {
     [Authorize]
-    public class CandidateController : Controller
+    public class CandidateDetailsController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public CandidateController()
+        public CandidateDetailsController()
         {
             _dbContext = new ApplicationDbContext();
         }
@@ -26,7 +26,7 @@ namespace StudentRecruiter.Controllers
         {
             var userId = User.Identity.GetUserId();
             var candidate = _dbContext.Candidates
-                .Where(c => c.UserId == userId)
+                .Where(c => c.ApplicationUserId == userId)
                 .Include(c => c.Address)
                 .Include(c => c.Document)
                 .Single();
@@ -54,7 +54,7 @@ namespace StudentRecruiter.Controllers
                 Pesel = candidate.Pesel,
                 PhoneNumber = candidate.PhoneNumber,
                 PlaceOfBirth = candidate.PlaceOfBirth,
-                UserId = userId
+                ApplicationUserId = userId
             };
 
             //_dbContext.Candidates.Add(newCandidate);
@@ -76,7 +76,7 @@ namespace StudentRecruiter.Controllers
 		{
 		    var userId = User.Identity.GetUserId();
 		    var candidate = _dbContext.Candidates
-		        .Where(c => c.UserId == userId)
+		        .Where(c => c.ApplicationUserId == userId)
 		        .Include(c => c.Address)
 		        .Include(c => c.Document)
 		        .Single();
