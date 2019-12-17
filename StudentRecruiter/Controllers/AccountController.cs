@@ -417,7 +417,19 @@ namespace StudentRecruiter.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing)
+		//
+		// GET: /Account/ExternalLoginFailure
+		[Authorize(Roles = "Manager,Admin")]
+		public ActionResult GetAllCandidates()
+		{
+			var candidates = _applicationDbContext.Roles
+				.Where(r => r.Name == Role.Candidate.ToString()).Select(c => c.Users).ToList();
+			var candidatesViewModel = from c in candidates select new UserViewModel { FirstName = c.F}
+			return View("Users");
+		}
+
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
