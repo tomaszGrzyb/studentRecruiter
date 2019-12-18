@@ -424,7 +424,7 @@ namespace StudentRecruiter.Controllers
 		{
 			var candidates = _applicationDbContext.Roles
 				.Where(r => r.Name == Role.Candidate.ToString()).Select(c => c.Users).ToList();
-			var candidatesViewModel = from c in candidates select new UserViewModel { FirstName = c.F}
+			//var candidatesViewModel = from c in candidates select new UserViewModel { FirstName = c.F}
 			return View("Users");
 		}
 

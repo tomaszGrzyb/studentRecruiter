@@ -11,7 +11,7 @@ using StudentRecruiter.Models;
 
 namespace StudentRecruiter.Controllers
 {
-    [Authorize]
+
     public class CandidateDetailsController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -20,7 +20,7 @@ namespace StudentRecruiter.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-        // GET: Candidate
+        
         [HttpGet]
         public ActionResult Details()
         {
@@ -34,12 +34,12 @@ namespace StudentRecruiter.Controllers
             return View(candidate);
         }
 
-        // POST: Candidate
-        [HttpPost]
+        [HttpGet]
         public ActionResult Create()
 		{
             var candidateViewModel = new CandidateViewModel();
-		    var documentTypes = _dbContext.DocumentTypes.ToList();
+			candidateViewModel.DocumentTypes = _dbContext.DocumentTypes.ToList();
+
 			return View(candidateViewModel);
 		}
 

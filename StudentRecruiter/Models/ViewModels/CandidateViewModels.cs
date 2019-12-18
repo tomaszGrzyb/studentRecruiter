@@ -12,51 +12,79 @@ namespace StudentRecruiter.Models.ViewModels
 	{
 
 		[DisplayName("Imię")]
+		[Required]
 		public string FirstName { get; set; }
 
 		[DisplayName("Drugie Imię")]
 		public string SecondName { get; set; }
 
+		[Required]
 		[DisplayName("Nazwisko")]
 		public string LastName { get; set; }
 
+
+		[Required]
 		[DisplayName("Data urodzenia")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime DateOfBirth { get; set; }
 
+		[Required]
 		[DisplayName("Miejsce urodzenia")]
 		public string PlaceOfBirth { get; set; }
 
 		[DisplayName("Numer telefonu")]
 		[Phone]
+		[StringLength(25)]
 		public string PhoneNumber { get; set; }
 
 		[DisplayName("Pesel")]
+		[StringLength(50)]
 		public string Pesel { get; set; }
 
 	    [Required]
 	    [StringLength(50)]
-	    public string Street { get; set; }
+		[DisplayName("Ulica")]
+		public string Street { get; set; }
 
 	    [Required]
 	    [StringLength(10)]
-	    public string HouseNumber { get; set; }
+		[DisplayName("Nr domu")]
+		public string HouseNumber { get; set; }
 
-	    public int? ApartmentNumber { get; set; }
-
-	    [Required]
-	    [StringLength(30)]
-	    public string City { get; set; }
-
-	    [Required]
-	    public string ZipCode { get; set; }
+		[DisplayName("Nr mieszkania")]
+		public int? ApartmentNumber { get; set; }
 
 	    [Required]
 	    [StringLength(30)]
-	    public string Country { get; set; }
+		[DisplayName("Miasto")]
+		public string City { get; set; }
 
-        public int DocumentTypeId { get; set; }
-        public List<DocumentType> DocumentTypes { get; set; }
-    }
+	    [Required]
+		[DisplayName("Kod pocztowy")]
+		public string ZipCode { get; set; }
+
+	    [Required]
+	    [StringLength(30)]
+		[DisplayName("Kraj")]
+		public string Country { get; set; }
+
+		[Required]
+		[StringLength(30)]
+		[DisplayName("Nr seryjny")]
+		public string SerialNumber { get; set; }
+
+		[DisplayName("Typ dokumentu")]
+		public List<DocumentType> DocumentTypes { get; set; }
+
+		[Required]
+		public int DocumentTypeId { get; set; }
+
+		[Required]
+		[DisplayName("Data ważności")]
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+		public DateTime ExpirationDate { get; set; }
+
+	}
 }

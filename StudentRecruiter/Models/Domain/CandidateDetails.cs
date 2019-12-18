@@ -27,6 +27,8 @@ namespace StudentRecruiter.Models.Domain
 
 		[StringLength(25)]
 		public string PhoneNumber { get; set; }
+
+		[StringLength(25)]
 		public string Pesel { get; set; }
 
 		public int AddressId { get; set; }
@@ -34,7 +36,6 @@ namespace StudentRecruiter.Models.Domain
 
 		public int DocumentId { get; set; }
 		public Document Document { get; set; }
-
 
 	}
 }

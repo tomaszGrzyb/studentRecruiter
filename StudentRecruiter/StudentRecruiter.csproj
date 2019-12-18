@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201912162119267_candidateDetails5.Designer.cs">
       <DependentUpon>201912162119267_candidateDetails5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912180245362_seed.cs" />
+    <Compile Include="Migrations\201912180245362_seed.Designer.cs">
+      <DependentUpon>201912180245362_seed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domain\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -384,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912162119267_candidateDetails5.resx">
       <DependentUpon>201912162119267_candidateDetails5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912180245362_seed.resx">
+      <DependentUpon>201912180245362_seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
