@@ -46,23 +46,51 @@ namespace StudentRecruiter.Controllers
         [HttpPost]
         public ActionResult Create(CandidateViewModel candidate)
         {
-            var userId = User.Identity.GetUserId();
-            var newCandidate = new CandidateDetails()
+			if (!ModelState.IsValid)
+			{
+				return View(candidate);
+			}		
+
+			var userId = User.Identity.GetUserId();
+			var address = new Address()
+			{
+				City = candidate.City,
+				Street = candidate.Street,
+				HouseNumber = candidate.HouseNumber,
+				Country = candidate.Country,
+				ZipCode = candidate.ZipCode,
+				ApartmentNumber = candidate.ApartmentNumber
+			};
+
+			var addressId = _dbContext.Addresses.Add(address).Id;
+			var document = new Document()
+			{
+				SerialNumber = candidate.SerialNumber,
+				DocumentTypeId = candidate.DocumentTypeId,
+				ExpirationDate = candidate.ExpirationDate
+			};
+			var documentId = _dbContext.Documents.Add(document).Id;		
+
+			var newCandidate = new CandidateDetails()
             {
                 SecondName = candidate.SecondName,
                 DateOfBirth = candidate.DateOfBirth,
                 Pesel = candidate.Pesel,
                 PhoneNumber = candidate.PhoneNumber,
                 PlaceOfBirth = candidate.PlaceOfBirth,
-                ApplicationUserId = userId
+                ApplicationUserId = userId,
+				DocumentId = documentId,
+				AddressId = addressId
+				
+				
             };
+			_dbContext.Candidates.Add(newCandidate);
+			_dbContext.SaveChanges();	
 
-            //_dbContext.Candidates.Add(newCandidate);
-            //_dbContext.SaveChanges();
-            
-            //if success
-            return View();
-        }
+
+			//if success
+			return RedirectToAction("Create", "Exams");
+		}
 
         [HttpPost]
         public ActionResult AddAddress(CandidateViewModel candidate)

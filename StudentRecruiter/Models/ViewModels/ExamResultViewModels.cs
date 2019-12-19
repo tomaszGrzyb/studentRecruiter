@@ -8,12 +8,12 @@ using System.Web;
 
 namespace StudentRecruiter.Models.ViewModels
 {
-	public class CandidateViewModel
+	public class ExamResultViewModel
 	{
 
-		[DisplayName("Imię")]
+		[DisplayName("Nazwa szkoły")]
 		[Required]
-		public string FirstName { get; set; }
+		public string SchoolName { get; set; }
 
 		[DisplayName("Drugie Imię")]
 		public string SecondName { get; set; }
@@ -24,10 +24,10 @@ namespace StudentRecruiter.Models.ViewModels
 
 
 		[Required]
-		[DisplayName("Data urodzenia")]
+		[DisplayName("Data egzaminu")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-		public DateTime DateOfBirth { get; set; }
+		public DateTime ExamDate { get; set; }
 
 		[Required]
 		[DisplayName("Miejsce urodzenia")]
