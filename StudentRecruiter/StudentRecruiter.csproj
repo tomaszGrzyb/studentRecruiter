@@ -197,6 +197,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CandidateDetailsController.cs" />
+    <Compile Include="Controllers\ExamResultsController.cs" />
+    <Compile Include="Controllers\ExamsController.cs" />
     <Compile Include="Controllers\FieldOfStudiesController.cs" />
     <Compile Include="Controllers\RecruitmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -243,6 +245,10 @@
     <Compile Include="Migrations\201912180245362_seed.cs" />
     <Compile Include="Migrations\201912180245362_seed.Designer.cs">
       <DependentUpon>201912180245362_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912191438469_guid.cs" />
+    <Compile Include="Migrations\201912191438469_guid.Designer.cs">
+      <DependentUpon>201912191438469_guid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domain\Address.cs" />
@@ -346,6 +352,16 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Exams\Create.cshtml" />
+    <Content Include="Views\Exams\Delete.cshtml" />
+    <Content Include="Views\Exams\Details.cshtml" />
+    <Content Include="Views\Exams\Edit.cshtml" />
+    <Content Include="Views\Exams\Index.cshtml" />
+    <Content Include="Views\ExamResults\Create.cshtml" />
+    <Content Include="Views\ExamResults\Delete.cshtml" />
+    <Content Include="Views\ExamResults\Details.cshtml" />
+    <Content Include="Views\ExamResults\Edit.cshtml" />
+    <Content Include="Views\ExamResults\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912180245362_seed.resx">
       <DependentUpon>201912180245362_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912191438469_guid.resx">
+      <DependentUpon>201912191438469_guid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

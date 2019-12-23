@@ -24,7 +24,7 @@ namespace StudentRecruiter.Models.ViewModels
 
 
 		[Required]
-		[DisplayName("Data egzaminu")]
+		[DisplayName("Data ukończenia szkoły")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime ExamDate { get; set; }

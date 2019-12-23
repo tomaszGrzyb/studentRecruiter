@@ -16,6 +16,11 @@ namespace StudentRecruiter.Models.ViewModels
 		public string SchoolName { get; set; }
 
 		[Required]
+		[StringLength(10)]
+		[DisplayName("Nr budynku")]
+		public string HouseNumber { get; set; }
+
+		[Required]
 		[StringLength(50)]
 		[DisplayName("Ulica")]
 		public string Street { get; set; }
@@ -39,10 +44,7 @@ namespace StudentRecruiter.Models.ViewModels
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime ExamDate { get; set; }
-
-
-		[DisplayName("Wyniki egzaminu")]
-		public List<ExamResult> ExamResults { get; set; }
+			   
 
 	}
 }

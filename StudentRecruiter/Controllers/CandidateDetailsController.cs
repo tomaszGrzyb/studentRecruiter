@@ -48,6 +48,7 @@ namespace StudentRecruiter.Controllers
         {
 			if (!ModelState.IsValid)
 			{
+
 				return View(candidate);
 			}		
 
