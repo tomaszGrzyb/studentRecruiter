@@ -8,16 +8,16 @@ using System.Web;
 
 namespace StudentRecruiter.Models.ViewModels
 {
-	public class CandidateViewModel
+	public class CandidateDetailsEditViewModel
 	{
 
-		[DisplayName("Imię")]		
+		[DisplayName("Imię")]
 		public string FirstName { get; set; }
 
 		[DisplayName("Drugie Imię")]
 		public string SecondName { get; set; }
 
-	
+
 		[DisplayName("Nazwisko")]
 		public string LastName { get; set; }
 
@@ -41,30 +41,30 @@ namespace StudentRecruiter.Models.ViewModels
 		[StringLength(50)]
 		public string Pesel { get; set; }
 
-	    [Required]
-	    [StringLength(50)]
+		[Required]
+		[StringLength(50)]
 		[DisplayName("Ulica")]
 		public string Street { get; set; }
 
-	    [Required]
-	    [StringLength(10)]
+		[Required]
+		[StringLength(10)]
 		[DisplayName("Nr domu")]
 		public string HouseNumber { get; set; }
 
 		[DisplayName("Nr mieszkania")]
 		public int? ApartmentNumber { get; set; }
 
-	    [Required]
-	    [StringLength(30)]
+		[Required]
+		[StringLength(30)]
 		[DisplayName("Miasto")]
 		public string City { get; set; }
 
-	    [Required]
+		[Required]
 		[DisplayName("Kod pocztowy")]
 		public string ZipCode { get; set; }
 
-	    [Required]
-	    [StringLength(30)]
+		[Required]
+		[StringLength(30)]
 		[DisplayName("Kraj")]
 		public string Country { get; set; }
 
@@ -72,7 +72,7 @@ namespace StudentRecruiter.Models.ViewModels
 		[StringLength(30)]
 		[DisplayName("Nr seryjny")]
 		public string SerialNumber { get; set; }
-			
+
 		[DisplayName("Typ dokumentu")]
 		public List<DocumentType> DocumentTypes { get; set; }
 
@@ -84,6 +84,34 @@ namespace StudentRecruiter.Models.ViewModels
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime ExpirationDate { get; set; }
+
+		[DisplayName("Nazwa szkoły")]
+		public string SchoolName { get; set; }
+
+		[DisplayName("Ulica")]
+		public string SchoolStreet { get; set; }
+
+		[DisplayName("Nr budynku")]
+		[StringLength(10)]
+		public string SchoolNumber { get; set; }	
+
+		[Required]
+		[StringLength(30)]
+		[DisplayName("Miasto")]
+		public string SchoolCity { get; set; }
+
+		[Required]
+		[DisplayName("Kod pocztowy")]
+		public string SchoolZipCode { get; set; }
+
+		[Required]
+		[DisplayName("Kraj")]
+		[StringLength(30)]
+		public string SchoolCountry { get; set; }
+
+
+		public int ExamId { get; set; }
+		
 
 	}
 }

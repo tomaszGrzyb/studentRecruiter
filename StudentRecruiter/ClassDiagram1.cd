@@ -1,45 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
-  <Class Name="StudentRecruiter.Models.Domain.Address">
-    <Position X="7.5" Y="6.25" Width="1.75" />
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StudentRecruiter.Models.Domain.Address" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAQAAAAIAAAAAAAAAEIAAAABAAIAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Address.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StudentRecruiter.Models.Domain.Appliance">
-    <Position X="7.5" Y="0.5" Width="1.75" />
+  <Class Name="StudentRecruiter.Models.Domain.Appliance" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAACCAAAEAAAgAAAAACBAAAAAAABAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>QAACCAAAEAAAgAAAAECBAAAAAAABAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Appliance.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Recruitment" />
-      <Property Name="RecruitmentStatus" />
       <Property Name="Candidate" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="StudentRecruiter.Models.Domain.ApplicationUser">
-    <Position X="9.75" Y="2.25" Width="2.25" />
+  <Class Name="StudentRecruiter.Models.Domain.ApplicationUser" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Models\Domain\ApplicationUser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StudentRecruiter.Models.Domain.CandidateDetails">
-    <Position X="7.5" Y="3" Width="1.75" />
+  <Class Name="StudentRecruiter.Models.Domain.CandidateDetails" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAACAAgAEBAAAACQAAAAQAAAAAAQAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>QAACAAgAEBAAAACQAAAAQAAAAAAQAABCAAAAAACAAAA=</HashCode>
       <FileName>Models\Domain\CandidateDetails.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Address" />
       <Property Name="Document" />
       <Property Name="ApplicationUser" />
+      <Property Name="Address" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="StudentRecruiter.Models.Domain.Document">
-    <Position X="10" Y="4.5" Width="1.5" />
+  <Class Name="StudentRecruiter.Models.Domain.Document" Collapsed="true">
+    <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAABAAAAAgAAAAAAAAAQAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Document.cs</FileName>
@@ -48,102 +46,11 @@
       <Property Name="DocumentType" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="StudentRecruiter.Models.Domain.DocumentType">
-    <Position X="10.25" Y="6.5" Width="1.5" />
+  <Class Name="StudentRecruiter.Models.Domain.DocumentType" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\DocumentType.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.Exam">
-    <Position X="3" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAACAAAAAAAAgAAAAAAAAAAACAAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\Exam.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="School" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Results" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.ExamResult">
-    <Position X="0.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIACAAAAEAAAAAAAAIAAAAQAAAAAAABAAAAAAACAAAA=</HashCode>
-      <FileName>Models\Domain\ExamResult.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Subject" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.FieldOfStudy">
-    <Position X="3" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\FieldOfStudy.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.Recruitment">
-    <Position X="5.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQACAAAAAAAAAIAAAEACEAAgAAAAQAAgUAAAAAAABAA=</HashCode>
-      <FileName>Models\Domain\Recruitment.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="FieldOfStudy" />
-      <Property Name="RecruitmentPhase" />
-      <Property Name="StudyLevel" />
-      <Property Name="StudyType" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="RequiredSubjects" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.RecruitmentPhase">
-    <Position X="3" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAEAAA=</HashCode>
-      <FileName>Models\Domain\RecruitmentPhase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.RecruitmentStatus">
-    <Position X="10" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\RecruitmentStatus.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.School">
-    <Position X="5.25" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\School.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Address" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.StudyLevel">
-    <Position X="3" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\StudyLevel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.StudyType">
-    <Position X="0.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\StudyType.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StudentRecruiter.Models.Domain.Subject">
-    <Position X="0.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Domain\Subject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

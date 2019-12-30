@@ -8,7 +8,7 @@ using System.Web;
 
 namespace StudentRecruiter.Models.ViewModels
 {
-	public class CandidateViewModel
+	public class CandidateDetailsViewModel
 	{
 
 		[DisplayName("Imię")]		
@@ -22,13 +22,10 @@ namespace StudentRecruiter.Models.ViewModels
 		public string LastName { get; set; }
 
 
-		[Required]
 		[DisplayName("Data urodzenia")]
-		[DataType(DataType.Date)]
-		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-		public DateTime DateOfBirth { get; set; }
+		public string DateOfBirth { get; set; }
 
-		[Required]
+		
 		[DisplayName("Miejsce urodzenia")]
 		public string PlaceOfBirth { get; set; }
 
@@ -63,8 +60,7 @@ namespace StudentRecruiter.Models.ViewModels
 		[DisplayName("Kod pocztowy")]
 		public string ZipCode { get; set; }
 
-	    [Required]
-	    [StringLength(30)]
+	    [Required]	    
 		[DisplayName("Kraj")]
 		public string Country { get; set; }
 
@@ -74,16 +70,34 @@ namespace StudentRecruiter.Models.ViewModels
 		public string SerialNumber { get; set; }
 			
 		[DisplayName("Typ dokumentu")]
-		public List<DocumentType> DocumentTypes { get; set; }
-
-		[Required]
-		public short DocumentTypeId { get; set; }
-
-		[Required]
+		public string DocumentType { get; set; }
+	
 		[DisplayName("Data ważności")]
-		[DataType(DataType.Date)]
-		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-		public DateTime ExpirationDate { get; set; }
+		public string ExpirationDate { get; set; }
+
+		[DisplayName("Nazwa szkoły")]
+		public string SchoolName { get; set; }
+
+		[DisplayName("Ulica")]
+		public string SchoolStreet { get; set; }
+
+		[DisplayName("Nr budynku")]
+		public string SchoolNumber { get; set; }	
+
+		[Required]
+		[StringLength(30)]
+		[DisplayName("Miasto")]
+		public string SchoolCity { get; set; }
+
+		[Required]
+		[DisplayName("Kod pocztowy")]
+		public string SchoolZipCode { get; set; }
+
+		[Required]
+		[DisplayName("Kraj")]
+		public string SchoolCountry { get; set; }
+
+		public List<ExamResultDetailsViewModel> ExamResults { get; set; }
 
 	}
 }

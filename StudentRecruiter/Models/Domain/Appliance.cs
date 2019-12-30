@@ -7,8 +7,9 @@ namespace StudentRecruiter.Models.Domain
 	public class Appliance
 	{
 		public int Id { get; set; }
+		public Guid RecruitmentNumber { get; set; }
 
-        [Required]
+		[Required]
 	    public int CandidateId { get; set; }
 
 	    [Required]

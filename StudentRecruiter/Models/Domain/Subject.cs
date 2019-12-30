@@ -10,6 +10,7 @@ namespace StudentRecruiter.Models.Domain
 
         [Required]
         [StringLength(30)]
+		[DisplayName("Przedmiot")]
         public string Name { get; set; }
 	   
     }

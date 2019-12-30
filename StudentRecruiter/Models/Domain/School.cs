@@ -10,8 +10,7 @@ namespace StudentRecruiter.Models.Domain
 		public int Id { get; set; }
         [Required]
         [StringLength(100)]
-
-        public string Name { get; set; }
+		public string Name { get; set; }
 	    public  int AddressId { get; set; }
 	    public Address Address { get; set; }
 

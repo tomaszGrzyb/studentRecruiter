@@ -8,15 +8,10 @@ using System.Web;
 
 namespace StudentRecruiter.Models.ViewModels
 {
-	public class ExamResultViewModel
+	public class ExamResultDetailsViewModel
 	{
-		public int ExamId { get; set; }
-		public int ExamResultId { get; set; }
-
-		public int SubjectId { get; set; }
-
-		[DisplayName("Przedmioty szkolne")]
-		public List<Subject> Subjects { get; set; }
+		[DisplayName("Przedmiot szkolny")]
+		public string Subject { get; set; }
 
 		[Required]
 		[DisplayName("Wynik")]

@@ -9,8 +9,10 @@ namespace StudentRecruiter.Models.Domain
 		public int Id { get; set; }
 	    public int ExamId { get; set; }
 	    public int SubjectId { get; set; }
+		[DisplayName("Uzyskane punkty")]
 	    public int Result { get; set; }
-	    public bool IsAdvanced { get; set; }
+		[DisplayName("Czy matura rozszerzona?")]
+		public bool IsAdvanced { get; set; }
 	    public Subject Subject { get; set; }
         public Exam Exam { get; set; }
 

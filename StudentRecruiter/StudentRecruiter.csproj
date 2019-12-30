@@ -250,6 +250,26 @@
     <Compile Include="Migrations\201912191438469_guid.Designer.cs">
       <DependentUpon>201912191438469_guid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912291346336_seed1.cs" />
+    <Compile Include="Migrations\201912291346336_seed1.Designer.cs">
+      <DependentUpon>201912291346336_seed1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912291355164_seed11.cs" />
+    <Compile Include="Migrations\201912291355164_seed11.Designer.cs">
+      <DependentUpon>201912291355164_seed11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912300214199_exam.cs" />
+    <Compile Include="Migrations\201912300214199_exam.Designer.cs">
+      <DependentUpon>201912300214199_exam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912300437158_uid.cs" />
+    <Compile Include="Migrations\201912300437158_uid.Designer.cs">
+      <DependentUpon>201912300437158_uid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912302041107_examId.cs" />
+    <Compile Include="Migrations\201912302041107_examId.Designer.cs">
+      <DependentUpon>201912302041107_examId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domain\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -268,8 +288,16 @@
     <Compile Include="Models\Domain\StudyLevel.cs" />
     <Compile Include="Models\Domain\StudyType.cs" />
     <Compile Include="Models\Domain\Subject.cs" />
+    <Compile Include="Models\Enums\RecruitmentStatuses.cs" />
+    <Compile Include="Models\Enums\StudyTypes.cs" />
     <Compile Include="Models\Enums\Role.cs" />
     <Compile Include="Models\ViewModels\AddressViewModel.cs" />
+    <Compile Include="Models\ViewModels\CandidateDetailsEditViewModels.cs" />
+    <Compile Include="Models\ViewModels\CandidateDetailsViewModels.cs" />
+    <Compile Include="Models\ViewModels\ExamResultDetailsViewModels.cs" />
+    <Compile Include="Models\ViewModels\RecruitmentDetailsViewModels.cs" />
+    <Compile Include="Models\ViewModels\RecruitmentWithTypesViewModels.cs" />
+    <Compile Include="Models\ViewModels\RecruitmentViewModels.cs" />
     <Compile Include="Models\ViewModels\ExamResultViewModels.cs" />
     <Compile Include="Models\ViewModels\ExamViewModels.cs" />
     <Compile Include="Models\ViewModels\DocumentViewModels.cs" />
@@ -359,9 +387,12 @@
     <Content Include="Views\Exams\Index.cshtml" />
     <Content Include="Views\ExamResults\Create.cshtml" />
     <Content Include="Views\ExamResults\Delete.cshtml" />
-    <Content Include="Views\ExamResults\Details.cshtml" />
     <Content Include="Views\ExamResults\Edit.cshtml" />
     <Content Include="Views\ExamResults\Index.cshtml" />
+    <Content Include="Views\Recruitment\StartNew.cshtml" />
+    <Content Include="Views\Recruitment\Index.cshtml" />
+    <Content Include="Views\Recruitment\Success.cshtml" />
+    <Content Include="Views\CandidateDetails\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -413,6 +444,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912191438469_guid.resx">
       <DependentUpon>201912191438469_guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912291346336_seed1.resx">
+      <DependentUpon>201912291346336_seed1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912291355164_seed11.resx">
+      <DependentUpon>201912291355164_seed11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912300214199_exam.resx">
+      <DependentUpon>201912300214199_exam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912300437158_uid.resx">
+      <DependentUpon>201912300437158_uid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912302041107_examId.resx">
+      <DependentUpon>201912302041107_examId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

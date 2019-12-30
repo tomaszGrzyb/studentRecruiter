@@ -21,8 +21,11 @@ namespace StudentRecruiter.Migrations
 			SeedRecruitmentStatuses(context);
 			SeedStudyLevels(context);
 			SeedStudyTypes(context);
-			
-        }
+			SeedPhases(context);
+			SeedSubjects(context);
+			SeedRecruitments(context);
+
+		}
 
 		private void SeedDocumentTypes(ApplicationDbContext context)
 		{
@@ -87,6 +90,77 @@ namespace StudentRecruiter.Migrations
 				context.SaveChanges();
 			}
 		
+		}
+
+
+		private void SeedSubjects(ApplicationDbContext context)
+		{
+			if (context.Subjects.Count() == 0)
+			{
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Matematyka" });	
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Fizyka" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Chemia" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Biologia" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Geografia" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Informatyka" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Historia" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Wiedza o spo³eczeñstwie" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Jêzyk polski" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Jêzyk angielski" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Jêzyk francuski" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Jêzyk niemiecki" });
+				context.Subjects.Add(new Models.Domain.Subject() { Name = "Jêzyk rosyjski" });
+				context.SaveChanges();
+			}
+
+		}
+
+		private void SeedPhases(ApplicationDbContext context)
+		{
+			if (context.RecruitmentPhases.Count() == 0)
+			{
+				context.RecruitmentPhases.Add(new Models.Domain.RecruitmentPhase() { Name = "Rekrutacja zimowa",DateFrom=new DateTime(2019,12,1),DateTo= new DateTime(2020,3,1) });
+				context.RecruitmentPhases.Add(new Models.Domain.RecruitmentPhase() { Name = "Rekrutacja letnia", DateFrom = new DateTime(2020, 4, 1), DateTo = new DateTime(2020, 8, 1) });
+				context.SaveChanges();				
+			}
+
+		}
+
+		private void SeedRecruitments(ApplicationDbContext context)
+		{
+			if (context.Recruitments.Count() == 0)
+			{
+				var requiredSubjectsIT = context.Subjects.Where(s => s.Name == "Informatyka" || s.Name == "Matematyka" || s.Name == "Fizyka").ToList();
+				var requiredSubjectsLaw = context.Subjects.Where(s => s.Name == "Wiedza o spo³eczeñstwie" || s.Name == "Jêzyk polski" || s.Name == "Historia").ToList();
+
+				var fieldOfStudyIT = context.FieldsOfStudies.Where(f => f.Name == "Informatyka").FirstOrDefault();
+				var fieldOfStudyLaw = context.FieldsOfStudies.Where(f => f.Name == "Prawo").FirstOrDefault();
+
+				var recruitmentPhase = context.RecruitmentPhases.Where(p => p.Name == "Rekrutacja zimowa").FirstOrDefault();
+
+				context.Recruitments.Add(new Models.Domain.Recruitment()
+				{					
+					RequiredSubjects = requiredSubjectsIT,
+					FieldOfStudyId = fieldOfStudyIT.Id,
+					RecruitmentPhaseId = recruitmentPhase.Id,
+					Slots = 5,
+					StudyLevelId = 1,
+					StudyTypeId = 1
+				});
+				
+				context.Recruitments.Add(new Models.Domain.Recruitment()
+				{
+					RequiredSubjects = requiredSubjectsLaw,
+					FieldOfStudyId = fieldOfStudyLaw.Id,
+					RecruitmentPhaseId = recruitmentPhase.Id,
+					Slots = 2,
+					StudyLevelId = 1,
+					StudyTypeId = 1
+				});
+
+				context.SaveChanges();
+			}
+
 		}
 	}
 }

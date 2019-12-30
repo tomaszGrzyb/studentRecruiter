@@ -7,8 +7,7 @@ namespace StudentRecruiter.Models.Domain
 {
 	public class Recruitment
 	{
-		public int Id { get; set; }
-		public Guid RecruitmentNumber { get; set; }
+		public int Id { get; set; }	
 		public int Slots { get; set; }
         public int FieldOfStudyId { get; set; }
 	    public int StudyLevelId { get; set; }

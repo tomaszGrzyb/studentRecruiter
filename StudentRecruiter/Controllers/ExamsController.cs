@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using StudentRecruiter.Models;
 using StudentRecruiter.Models.Domain;
 using StudentRecruiter.Models.ViewModels;
@@ -41,7 +42,7 @@ namespace StudentRecruiter.Controllers
         // GET: Exams/Create
         public ActionResult Create()
         {
-            ViewBag.SchoolId = new SelectList(db.Schools, "Id", "Name");
+         
             return View();
         }
 
@@ -71,21 +72,27 @@ namespace StudentRecruiter.Controllers
 				};
 
 				var schoolId = db.Schools.Add(school).Id;
-
+				var userId = User.Identity.GetUserId();
+				var candidate = db.Candidates
+					.Where(c => c.ApplicationUserId == userId).Single();
 				var newExam = new Exam()
 				{
+					CandidateDetailsId = candidate.Id,
 					ExamDate = exam.ExamDate,
 					Results = new List<ExamResult>(),
 					SchoolId = schoolId
 				};
 				
 
-				var examId = db.Exams.Add(newExam);
-                db.SaveChanges();
-                return RedirectToAction("Index", "ExamResults", new{ Id = examId });
+				var examDb = db.Exams.Add(newExam);
+		
+
+				
+				db.SaveChanges();
+
+                return RedirectToAction("Index", "ExamResults", new{ examId = examDb.Id });
             }
 
-            //ViewBag.SchoolId = new SelectList(db.Schools, "Id", "Name", exam.SchoolId);
             return View(exam);
         }
 

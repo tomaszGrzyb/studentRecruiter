@@ -1,0 +1,89 @@
+﻿@model StudentRecruiter.Models.ViewModels.RecruitmentWithTypesViewModel
+
+<h4>Zapisz się na wybrany kierunek studiów</h4>
+
+<h5>Studia stacjonarne</h5>
+
+<table class="table">
+	<tr>
+		<th>
+			Kierunek studiów
+		</th>
+		<th>
+			Ilość miejsc
+		</th>
+		<th>
+			Twoja pozycja na liście
+		</th>
+		<th>
+			Ilość uzyskanych punktów
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model.FullTimeStudies)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.FieldOfStudy)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Slots)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Rank)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Points)
+			</td>
+			<td>
+				@Html.ActionLink("Szczegóły", "Edit", new { id = item.RecruitmentId }) |
+				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId })
+			</td>
+		</tr>
+	}
+</table>
+
+<h5>Studia niestacjonarne</h5>
+
+<table class="table">
+	<tr>
+		<th>
+			Kierunek studiów
+		</th>
+		<th>
+			Ilość miejsc
+		</th>
+		<th>
+			Twoja pozycja na liście
+		</th>
+		<th>
+			Ilość uzyskanych punktów
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model.WeekendStudies)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.FieldOfStudy)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Slots)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Rank)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Points)
+			</td>
+			<td>
+				@Html.ActionLink("Szczegóły", "Edit", new { id = item.RecruitmentId }) |
+				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId })
+			</td>
+		</tr>
+	}
+</table>
+
+

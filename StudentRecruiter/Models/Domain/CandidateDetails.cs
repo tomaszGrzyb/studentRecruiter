@@ -36,6 +36,7 @@ namespace StudentRecruiter.Models.Domain
 
 		public int DocumentId { get; set; }
 		public Document Document { get; set; }
+		
 
 	}
 }
