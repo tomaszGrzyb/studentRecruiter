@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201912302041107_examId.Designer.cs">
       <DependentUpon>201912302041107_examId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912310441033_subjects.cs" />
+    <Compile Include="Migrations\201912310441033_subjects.Designer.cs">
+      <DependentUpon>201912310441033_subjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domain\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -292,8 +296,11 @@
     <Compile Include="Models\Enums\StudyTypes.cs" />
     <Compile Include="Models\Enums\Role.cs" />
     <Compile Include="Models\ViewModels\AddressViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminRecruitmentViewModels.cs" />
+    <Compile Include="Models\ViewModels\AdminCreateRecruitmentViewModels.cs" />
     <Compile Include="Models\ViewModels\MainRecruitmentWithTypesViewModels.cs" />
     <Compile Include="Models\ViewModels\MainRecruitmentViewModels.cs" />
+    <Compile Include="Models\ViewModels\RequiredSubjectsViewModels.cs" />
     <Compile Include="Models\ViewModels\SuccessViewModels.cs" />
     <Compile Include="Models\ViewModels\CandidateDetailsEditViewModels.cs" />
     <Compile Include="Models\ViewModels\CandidateDetailsViewModels.cs" />
@@ -400,6 +407,9 @@
     <Content Include="Views\Recruitment\Mine.cshtml" />
     <Content Include="Views\Recruitment\NoRecrutation.cshtml" />
     <Content Include="Views\Recruitment\MainPage.cshtml" />
+    <Content Include="Views\Recruitment\AdminIndex.cshtml" />
+    <Content Include="Views\Recruitment\Create.cshtml" />
+    <Content Include="Views\Recruitment\RequiredSubjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -466,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912302041107_examId.resx">
       <DependentUpon>201912302041107_examId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912310441033_subjects.resx">
+      <DependentUpon>201912310441033_subjects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

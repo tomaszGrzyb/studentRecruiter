@@ -35,8 +35,8 @@ namespace StudentRecruiter.Controllers
 
 			var main = new MainRecruitmentWithTypesViewModel();
 			main.PhaseName = phase.Name;
-			main.DateFrom = phase.DateFrom.Date.ToString();
-			main.DateTo = phase.DateTo.Date.ToString();
+			main.DateFrom = phase.DateFrom.Date.ToString("dd-MM-yyyy");
+			main.DateTo = phase.DateTo.Date.ToString("dd-MM-yyyy");
 			main.FullTimeStudies = new List<MainRecruitmentViewModel>();
 			main.WeekendStudies = new List<MainRecruitmentViewModel>();
 
@@ -47,7 +47,7 @@ namespace StudentRecruiter.Controllers
 				vm.StudyType = item.StudyType.Name;
 				vm.FieldOfStudy = item.FieldOfStudy.Name;
 				vm.Description = item.FieldOfStudy.Description;
-				vm.RequiredSubjects = item.RequiredSubjects;
+				vm.RequiredSubjects = item.RequiredSubjects.ToList();
 				vm.Slots = item.Slots;
 				vm.StudyTypeId = item.StudyTypeId;
 				allViewModels.Add(vm);
@@ -136,11 +136,129 @@ namespace StudentRecruiter.Controllers
 			return View(recruitmentsWithTypes);
 		}
 
-		public ActionResult StartNew()
+		//[Authorize(Roles = "Admin")]
+		public ActionResult AdminIndex()
 		{
-			return View();
+			var all = _dbContext.Recruitments
+							.Include(r => r.RequiredSubjects)
+							.Include(r => r.StudyType)
+							.Include(r => r.StudyLevel)
+							.Include(r => r.RecruitmentPhase)
+							.Include(r => r.FieldOfStudy)
+							.ToList();
+
+			var vmList = new List<AdminRecruitmentViewModel>();
+			foreach (var item in all)
+			{
+				var vm = new AdminRecruitmentViewModel()
+				{
+					RecruitmentId = item.Id,
+					FieldOfStudy = item.FieldOfStudy.Name,
+					StudyLevel = item.StudyLevel.Name,
+					StudyType = item.StudyType.Name,
+					RequiredSubjects = item.RequiredSubjects.ToList(),
+					RecruitmentPhase = item.RecruitmentPhase.Name,
+					Slots = item.Slots
+				};
+
+				vmList.Add(vm);
+			}
+			return View(vmList);
 		}
 
+		//[Authorize(Roles = "Admin")]
+		//[HttpGet]
+		//public ActionResult Create()
+		//{
+		//	var all = _dbContext.Recruitments
+		//		.Include(r => r.RequiredSubjects)				
+		//		.ToList();
+		//	var studyTypes = _dbContext.StudyTypes.ToList();
+		//	var studyLevels = _dbContext.StudyLevels.ToList();
+		//	var phases = _dbContext.RecruitmentPhases.ToList();
+		//	var fieldsOfStudies = _dbContext.FieldsOfStudies.ToList();
+		//	var allViewModels = new List<AdminCreateRecruitmentViewModel>();
+
+		//	foreach (var item in all)
+		//	{
+		//		var vm = new AdminCreateRecruitmentViewModel()
+		//		{
+		//			FieldOfStudyId = item.FieldOfStudyId,
+		//			FieldOfStudies = fieldsOfStudies,
+		//			RecruitmentId = item.Id,
+		//			RecruitmentPhaseId = item.RecruitmentPhaseId,
+		//			RecruitmentPhases = phases,
+		//			RequiredSubjects = item.RequiredSubjects.ToList(),
+		//			Slots = item.Slots,
+		//			StudyLevelId = item.StudyLevelId,
+		//			StudyLevels = studyLevels,
+		//			StudyTypeId = item.StudyTypeId,
+		//			StudyTypes = studyTypes
+		//		};
+		//		allViewModels.Add(vm);
+		//	}
+		//	return View(allViewModels);
+		//}
+
+		[HttpGet]
+		public ActionResult Create()
+		{
+			var studyTypes = _dbContext.StudyTypes.ToList();
+			var studyLevels = _dbContext.StudyLevels.ToList();
+			var phases = _dbContext.RecruitmentPhases.ToList();
+			var fieldsOfStudies = _dbContext.FieldsOfStudies.ToList();		
+		
+				var vm = new AdminCreateRecruitmentViewModel()
+				{
+					FieldOfStudies = fieldsOfStudies,			
+					RecruitmentPhases = phases,			
+					StudyLevels = studyLevels,			
+					StudyTypes = studyTypes
+				};
+			
+		
+			return View(vm);
+		}
+
+		[HttpPost]
+		public ActionResult Create(AdminCreateRecruitmentViewModel vm)
+		{
+			var newRecruitment = new Recruitment()
+			{
+				RecruitmentPhaseId = vm.RecruitmentPhaseId,
+				StudyLevelId = vm.StudyLevelId,
+				StudyTypeId = vm.StudyTypeId,
+				Slots = vm.Slots,
+				FieldOfStudyId = vm.FieldOfStudyId			
+			};
+
+			_dbContext.Recruitments.Add(newRecruitment);
+			_dbContext.SaveChanges();
+			return RedirectToAction("AdminIndex");
+		}
+		[HttpGet]
+		public ActionResult RequiredSubjects(int? Id)
+		{
+			var subjects = _dbContext.Subjects.ToList();
+			var vm = new RequiredSubjectsViewModel()
+			{
+				RecruitmentId = (int)Id,
+				Subjects = subjects
+			};
+			return View(vm);
+		}
+
+		[HttpPost]
+		public ActionResult RequiredSubjects(RequiredSubjectsViewModel vm)
+		{
+			var recruitment = _dbContext.Recruitments.Find(vm.RecruitmentId);
+			var subject = _dbContext.Subjects.Find(vm.SubjectId);
+			recruitment.RequiredSubjects.Add(subject);
+			_dbContext.SaveChanges();
+			return RedirectToAction("AdminIndex");
+		}
+
+	
 		public ActionResult Mine()
 		{
 			var userId = User.Identity.GetUserId();

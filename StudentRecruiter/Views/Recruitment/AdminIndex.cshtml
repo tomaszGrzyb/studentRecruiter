@@ -1,0 +1,66 @@
+﻿@model IEnumerable<StudentRecruiter.Models.ViewModels.AdminRecruitmentViewModel>
+
+
+<h2>Rekrutacje</h2>
+
+<p>
+	@Html.ActionLink("Dodaj nową rekrutację", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.FieldOfStudy)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Slots)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.StudyType)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.StudyLevel)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.RecruitmentPhase)
+		</th>
+		<th>
+			Wymagane przedmioty maturalne
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.FieldOfStudy)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Slots)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.StudyType)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.StudyLevel)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.RecruitmentPhase)
+			</td>
+			<td>
+				<ul>
+					@foreach (var subject in item.RequiredSubjects)
+					{
+					<li>@subject.Name</li>
+					}
+				</ul>
+
+			</td>
+			<td>
+				@Html.ActionLink("Edytuj", "Edit", new { id = item.RecruitmentId })||
+				@Html.ActionLink("Dodaj przedmioty maturalne", "RequiredSubjects", new { id = item.RecruitmentId })			
+			</td>
+		</tr>
+	}
+
+</table>

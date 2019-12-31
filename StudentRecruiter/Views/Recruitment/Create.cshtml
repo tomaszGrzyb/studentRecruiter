@@ -1,0 +1,55 @@
+﻿@model StudentRecruiter.Models.ViewModels.AdminCreateRecruitmentViewModel
+
+<h2>Rekrutacje</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+	<h4>Utwórz nową rekrutację</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<div class="form-group">
+		@Html.LabelFor(model => model.FieldOfStudies, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownListFor(model => model.FieldOfStudyId, new SelectList(Model.FieldOfStudies, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Slots, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Slots, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Slots, "", new { @class = "text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.StudyTypes, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownListFor(model => model.StudyTypeId, new SelectList(Model.StudyTypes, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.StudyLevels, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownListFor(model => model.StudyLevelId, new SelectList(Model.StudyLevels, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.RecruitmentPhases, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownListFor(model => model.RecruitmentPhaseId, new SelectList(Model.RecruitmentPhases, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Zapisz" class="btn btn-primary" />
+		</div>
+	</div>
+</div>
+}
+
+

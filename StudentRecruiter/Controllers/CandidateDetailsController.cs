@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using StudentRecruiter.Models.ViewModels;
 using StudentRecruiter.Models;
+using StudentRecruiter.Models.Enums;
 
 namespace StudentRecruiter.Controllers
 {
@@ -271,6 +272,11 @@ namespace StudentRecruiter.Controllers
 			var userId = User.Identity.GetUserId();
 
 			var user = _dbContext.Users.Where(x => x.Id == userId).Single();
+
+			if (User.IsInRole(Role.Admin.ToString()))
+			{
+				return RedirectToAction("AdminIndex", "Recruitment");
+			}
 
 			candidateViewModel.FirstName = user.FirstName;
 			candidateViewModel.LastName = user.LastName;
