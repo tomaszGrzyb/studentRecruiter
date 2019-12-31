@@ -61,6 +61,7 @@ namespace StudentRecruiter.Models.ViewModels
 
 		[Required]
 		[DisplayName("Kod pocztowy")]
+		[RegularExpression("^\\d{2}(-\\d{3})?$", ErrorMessage = "Błędny kod pocztowy")]
 		public string ZipCode { get; set; }
 
 		[Required]

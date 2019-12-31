@@ -1,0 +1,12 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+	if (User.IsInRole("Candidate"))
+	{
+		<div class="row" style="text-align:center">
+			<input type="button" value="Twój profil" class="btn btn-success" , style="margin:0px 5px 0px 5px; width:200px;height:100px;" onclick="location.href='@Url.Action("Details", "CandidateDetails")'" />
+			<input type="button" value="Wyniki z egzaminu" class="btn btn-success" , style="margin:0px 5px 0px 5px; width:200px; height:100px;" onclick="location.href='@Url.Action("Mine", "ExamResults")'" />
+			<input type="button" value="Twoja aktualna rekrutacja" class="btn btn-success" , style="margin:0px 5px 0px 5px; width:200px;height:100px;" onclick="location.href='@Url.Action("Mine", "Recruitment")'" />
+		</div>
+	}
+}

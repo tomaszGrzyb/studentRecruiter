@@ -24,8 +24,26 @@ namespace StudentRecruiter.Controllers
             return View(examResults.ToList());
         }
 
-    
-        public ActionResult Details(int? id)
+		public ActionResult Mine()
+		{
+			var userId = User.Identity.GetUserId();
+			var candidate = db.Candidates
+				.Where(c => c.ApplicationUserId == userId).Single();
+
+			var exam = db.Exams.Where(e => e.CandidateDetailsId == candidate.Id).FirstOrDefault();
+			if (exam != null )
+			{
+				return RedirectToAction("Index", "ExamResults", new { examId = exam.Id });
+			}
+			else
+			{
+				return RedirectToAction("Create", "ExamResults");
+			}
+			
+		}
+
+
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {

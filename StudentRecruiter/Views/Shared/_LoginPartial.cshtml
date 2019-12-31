@@ -7,10 +7,10 @@
 
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				@Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Details", "CandidateDetails", routeValues: null, htmlAttributes: new { title = "Profil" })
+				@Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "CandidateDetails", routeValues: null, htmlAttributes: new { title = "Profil" })
 			</li>
 			<li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj się</a></li>
-		</ul>
+		</ul>		
 	}
 }
 else

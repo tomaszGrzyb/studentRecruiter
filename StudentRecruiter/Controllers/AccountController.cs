@@ -417,9 +417,8 @@ namespace StudentRecruiter.Controllers
             return View();
         }
 
-		//
-		// GET: /Account/ExternalLoginFailure
-		[Authorize(Roles = "Manager,Admin")]
+
+		[Authorize(Roles = "Admin")]
 		public ActionResult GetAllCandidates()
 		{
 			var candidates = _applicationDbContext.Roles

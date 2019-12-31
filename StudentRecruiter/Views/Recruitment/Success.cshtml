@@ -1,4 +1,17 @@
-﻿<h4>Twoja kandydatura została przyjęta. Proszę uiścić opłatę rekrutacyjną w wysokości 80 zł na podane konto bankowe, a następnie proszę czekać do końca okresu rekrutacji na wynik.<</h4>>
+﻿@model StudentRecruiter.Models.ViewModels.ApplianceViewModel
+
+<h4>Twoja kandydatura na kierunek @Model.FieldOfStudy została przyjęta. </h4>
+<p>Kolejnym krokiem rekrutacji jest uiszczenie opłaty w wysokości 80 złotych na konto 12 3456 7890 0987 7654 4321 </p>
+<p> W tytule przelewu proszę podać numer rezerwacji: <b>@Model.RecrutationNumber</b></p>
+
+<p>Etap rekrutacji kończy się w dniu @Model.ClosingDate</p>
+
+
+
+<div class="row" style="text-align:center">	
+	<input type="button" value="Twoja aktualna rekrutacja" class="btn btn-success" , style="margin:0px 5px 0px 5px; width:200px;height:100px;" onclick="location.href='@Url.Action("Mine", "Recruitment")'" />
+</div>
+
 
 
 

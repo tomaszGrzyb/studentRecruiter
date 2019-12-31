@@ -292,10 +292,14 @@
     <Compile Include="Models\Enums\StudyTypes.cs" />
     <Compile Include="Models\Enums\Role.cs" />
     <Compile Include="Models\ViewModels\AddressViewModel.cs" />
+    <Compile Include="Models\ViewModels\MainRecruitmentWithTypesViewModels.cs" />
+    <Compile Include="Models\ViewModels\MainRecruitmentViewModels.cs" />
+    <Compile Include="Models\ViewModels\SuccessViewModels.cs" />
     <Compile Include="Models\ViewModels\CandidateDetailsEditViewModels.cs" />
     <Compile Include="Models\ViewModels\CandidateDetailsViewModels.cs" />
     <Compile Include="Models\ViewModels\ExamResultDetailsViewModels.cs" />
     <Compile Include="Models\ViewModels\RecruitmentDetailsViewModels.cs" />
+    <Compile Include="Models\ViewModels\ApplianceViewModels.cs" />
     <Compile Include="Models\ViewModels\RecruitmentWithTypesViewModels.cs" />
     <Compile Include="Models\ViewModels\RecruitmentViewModels.cs" />
     <Compile Include="Models\ViewModels\ExamResultViewModels.cs" />
@@ -389,10 +393,13 @@
     <Content Include="Views\ExamResults\Delete.cshtml" />
     <Content Include="Views\ExamResults\Edit.cshtml" />
     <Content Include="Views\ExamResults\Index.cshtml" />
-    <Content Include="Views\Recruitment\StartNew.cshtml" />
     <Content Include="Views\Recruitment\Index.cshtml" />
     <Content Include="Views\Recruitment\Success.cshtml" />
     <Content Include="Views\CandidateDetails\Details.cshtml" />
+    <Content Include="Views\CandidateDetails\Index.cshtml" />
+    <Content Include="Views\Recruitment\Mine.cshtml" />
+    <Content Include="Views\Recruitment\NoRecrutation.cshtml" />
+    <Content Include="Views\Recruitment\MainPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,8 +37,7 @@
 				@Html.DisplayFor(modelItem => item.Points)
 			</td>
 			<td>
-				@Html.ActionLink("Szczegóły", "Edit", new { id = item.RecruitmentId }) |
-				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId })
+				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId, points = item.Points })
 			</td>
 		</tr>
 	}
@@ -79,8 +78,7 @@
 				@Html.DisplayFor(modelItem => item.Points)
 			</td>
 			<td>
-				@Html.ActionLink("Szczegóły", "Edit", new { id = item.RecruitmentId }) |
-				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId })
+				@Html.ActionLink("Zapisz się", "Apply", new { id = item.RecruitmentId, points = item.Points })
 			</td>
 		</tr>
 	}

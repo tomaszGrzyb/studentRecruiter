@@ -1,0 +1,94 @@
+﻿@model StudentRecruiter.Models.ViewModels.MainRecruitmentWithTypesViewModel
+
+<h4>@Model.PhaseName</h4>
+<h4>Rekrutacja trwa od: @Model.DateFrom do: @Model.DateTo </h4>
+<h5>Aby wziąć udział w procesie rekrutacji należy się zarejestrować w systemie.</h5>
+<h5>Aktualnie są przeprowadzane rekrutacje na poniższych kierunkach:</h5>
+<hr />
+<h5>Studia stacjonarne</h5>
+<table class="table">
+	<tr>
+		<th>
+			Kierunek studiów
+		</th>
+		<th>
+			Opis
+		</th>
+		<th>
+			Ilość miejsc
+		</th>
+		<th>
+			Wymagane przedmioty na egzaminie maturalnym
+		</th>
+	</tr>
+
+	@foreach (var item in Model.FullTimeStudies)
+	{
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.FieldOfStudy)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Description)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Slots)
+		</td>
+		<td>
+			<ul>
+				@foreach (var subject in item.RequiredSubjects)
+				{
+					<li>@subject.Name</li>
+				}
+				</ul>
+			</td>
+	
+	
+	</tr>
+	}
+</table>
+
+<h5>Studia niestacjonarne</h5>
+
+<table class="table">
+	<tr>
+		<th>
+			Kierunek studiów
+		</th>
+		<th>
+			Opis
+		</th>
+		<th>
+			Ilość miejsc
+		</th>
+		<th>
+			Wymagane przedmioty na egzaminie maturalnym
+		</th>
+	</tr>
+
+	@foreach (var item in Model.WeekendStudies)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.FieldOfStudy)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Slots)
+			</td>
+			<td>
+				<ul>
+					@foreach (var subject in item.RequiredSubjects)
+					{
+						<li>@subject.Name</li>
+					}
+				</ul>
+			</td>
+
+
+		</tr>
+	}
+</table>
+

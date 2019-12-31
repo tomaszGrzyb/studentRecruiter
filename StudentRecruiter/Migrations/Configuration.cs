@@ -68,7 +68,7 @@ namespace StudentRecruiter.Migrations
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Matematyka", Description = "Dla tych, co lubi¹ liczyæ" });
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Administracja", Description = "Dla tych, co lubi¹ zarz¹dzaæ" });
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Prawo", Description = "Dla tych, co lubi¹ zasady" });
-				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Rolnictwo", Description = "Dla tych, co lubi¹ sadziæ" });
+				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Rolnictwo", Description = "Dla tych, co lubi¹ roœliny" });
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Bankowoœæ", Description = "Dla tych, co lubi¹ liczyæ pieni¹dze" });
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Budownictwo", Description = "Dla tych, co lubi¹ budowaæ" });
 				context.FieldsOfStudies.Add(new Models.Domain.FieldOfStudy() { Name = "Architektura", Description = "Dla tych, co lubi¹ projektowaæ" });
@@ -81,12 +81,12 @@ namespace StudentRecruiter.Migrations
 		{
 			if (context.RecruitmentStatuses.Count() == 0)
 			{
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Nowa" });
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Oczekiwanie na zap³atê" });
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Zap³acono" });
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Zakwalifikowano" });
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Odrzucono" });
-				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Anulowana" });
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Nowa", Description = "Rekrutacja zosta³a utworzona" });
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Oczekiwanie na zap³atê", Description = "Zg³oszenie zosta³o wprowadzone do systemu. Aby zatwierdziæ kandydaturê nale¿y op³aciæ rezerwacjê." });
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Zap³acono" ,Description ="Rezerwacja jest op³acona i oczekuje na zamkniêcie okresu rekrutacji i podliczenie wyników."});
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Zakwalifikowano", Description = "Kandydat zosta³ przyjêty na studia" });
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Odrzucono", Description = "Kandydat zosta³ odrzucony"});
+				context.RecruitmentStatuses.Add(new Models.Domain.RecruitmentStatus() { Name = "Anulowana", Description = "Rekrutacja zosta³a anulowana" });
 				context.SaveChanges();
 			}
 		
@@ -132,9 +132,11 @@ namespace StudentRecruiter.Migrations
 			{
 				var requiredSubjectsIT = context.Subjects.Where(s => s.Name == "Informatyka" || s.Name == "Matematyka" || s.Name == "Fizyka").ToList();
 				var requiredSubjectsLaw = context.Subjects.Where(s => s.Name == "Wiedza o spo³eczeñstwie" || s.Name == "Jêzyk polski" || s.Name == "Historia").ToList();
+				var requiredSubjectsFarm = context.Subjects.Where(s => s.Name == "Biologia" || s.Name == "Chemia" || s.Name == "Geografia").ToList();
 
 				var fieldOfStudyIT = context.FieldsOfStudies.Where(f => f.Name == "Informatyka").FirstOrDefault();
 				var fieldOfStudyLaw = context.FieldsOfStudies.Where(f => f.Name == "Prawo").FirstOrDefault();
+				var fieldOfStudyFarm = context.FieldsOfStudies.Where(f => f.Name == "Rolnictwo").FirstOrDefault();
 
 				var recruitmentPhase = context.RecruitmentPhases.Where(p => p.Name == "Rekrutacja zimowa").FirstOrDefault();
 
@@ -156,6 +158,16 @@ namespace StudentRecruiter.Migrations
 					Slots = 2,
 					StudyLevelId = 1,
 					StudyTypeId = 1
+				});
+
+				context.Recruitments.Add(new Models.Domain.Recruitment()
+				{
+					RequiredSubjects = requiredSubjectsFarm,
+					FieldOfStudyId = fieldOfStudyFarm.Id,
+					RecruitmentPhaseId = recruitmentPhase.Id,
+					Slots = 10,
+					StudyLevelId = 1,
+					StudyTypeId = 2
 				});
 
 				context.SaveChanges();

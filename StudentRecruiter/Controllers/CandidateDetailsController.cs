@@ -21,6 +21,9 @@ namespace StudentRecruiter.Controllers
 			_dbContext = new ApplicationDbContext();
 		}
 
+
+	
+
 		[HttpGet]
 		public ActionResult Details()
 		{
@@ -91,6 +94,7 @@ namespace StudentRecruiter.Controllers
 
 				foreach (var r in results)
 				{
+					candidateDetails.ExamResults = new List<ExamResultDetailsViewModel>();
 					candidateDetails.ExamResults.Add(
 						new ExamResultDetailsViewModel()
 						{
@@ -104,6 +108,11 @@ namespace StudentRecruiter.Controllers
 			return View(candidateDetails);
 		}
 
+		[HttpGet]
+		public ActionResult Index()
+		{
+			return View();
+		}
 
 		[HttpGet]
 		public ActionResult Edit()
